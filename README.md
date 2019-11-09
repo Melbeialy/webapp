@@ -1,34 +1,12 @@
-# Simple Web Application
+# Docker webapp
 
-This is a simple web application using [Python Flask](http://flask.pocoo.org/). This is used for the demonstration of Docker build and deployment
-  
-Below are the steps required to get this working on a base linux system. Commands in brackets shows how docker file is written to build image layers. 
-   
-## 1. Install all required dependencies
-  
-Python and its dependencies
+## Overview 
 
-  (RUN) apt-get update 
-  (RUN) apt-get install -y python python-pip
+This repository is used to create the elbeialy/webapp docker image which runs a simple web application.
 
-   
-## 2. Install and Configure Web Server
+The result of running this web application is displaying "Hello Platform Engineering!" on a web browser.
 
-Install Python Flask dependency
-
-    (RUN) pip install flask
-
-- Copy app.py or download it from source repository
-    (ADD) ./app.py /opt/app.py
-
-## 3. Start Web Server
-
-Start web server
-
-    (ENTRYPOINT) FLASK_APP=/opt/app.py flask run --host=0.0.0.0
-    
-## 4. Test
-
-Open a browser and go to URL
-
-    http://<IP>:5000                            => 
+## System Requirements
+- Docker Installed.
+- 432 MB free space for downlowding/pilling the docker image.
+- 10 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
