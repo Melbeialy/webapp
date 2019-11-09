@@ -6,6 +6,6 @@ RUN apt-get install -y python python-pip
 
 RUN pip install flask
 
-ADD ./app.py /opt/app.py
+ADD ./webapp/app.py /opt/app.py
 
 ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
