@@ -1,6 +1,6 @@
 # Simple Web Application
 
-This is a simple web application using [Python Flask](http://flask.pocoo.org/). This is used for the demonstration of Docker build and deployment
+This is a simple web application using [Python Flask](http://flask.pocoo.org/). This is used for the demonstration of Docker build and deployment.
   
 Below are the steps required to get this working on a base linux system. Commands in brackets shows how docker file is written to build image layers. 
    
@@ -8,9 +8,8 @@ Below are the steps required to get this working on a base linux system. Command
   
 Python and its dependencies
 
-  (RUN) apt-get update 
-  (RUN) apt-get install -y python python-pip
-
+    (RUN) apt-get update 
+    (RUN) apt-get install -y python python-pip
    
 ## 2. Install and Configure Web Server
 
