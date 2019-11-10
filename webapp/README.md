@@ -17,7 +17,8 @@ Install Python Flask dependency
 
     (RUN) pip install flask
 
-- Copy app.py or download it from source repository
+Copy app.py or download it from source repository
+
     (ADD) ./app.py /opt/app.py
 
 ## 3. Start Web Server
