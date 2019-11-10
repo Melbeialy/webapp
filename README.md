@@ -22,5 +22,11 @@ The result of running this web application is displaying "Hello Platform Enginee
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
-    sudo docker build -tag senzing/web-app-demo .
+    sudo docker build -tag elbeialy/webap .
     ```
+## Run Docker Container
+- Using `docker` command.
+    ```console
+    docker run -d -p 5000:5000 elbeialy/webapp
+    ```
+   
