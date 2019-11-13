@@ -3,7 +3,7 @@ variable "profile" {
 }
 
 variable "region" {
-  default = "ap-south-1"
+  default = "ap-southeast-2"
 }
 
 variable "key" {
@@ -15,7 +15,7 @@ variable "sub_ids" {
 }
 
 variable "instance-ami" {
-  default = "ami-0b99c7725b9484f9e" # AMI of Mumbai region
+  default = "ami-075caa3491def750b" # AMI of Sydney region
 }
 
 variable "instance_type" {
