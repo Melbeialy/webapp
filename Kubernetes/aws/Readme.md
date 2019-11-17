@@ -63,18 +63,18 @@ Default region name []: ap-southeast-2
 Default output format []: json
 ```
 ```
-aws eks --region region update-kubeconfig --name cluster_name
+$ aws eks --region region update-kubeconfig --name cluster_name
 ```
 
 ## Test your `kubectl` configuration
 ```
-kubectl get svc
+$ kubectl get svc
 ```
 
 ## Enable worker nodes to EKS cluster
 Download, edit, and apply the AWS IAM Authenticator configuration map
 ```
-curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/aws-auth-cm.yaml
+$ curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/aws-auth-cm.yaml
 ```
 open the aws-auth-cm.yaml file and replace the <ARN of instance role (not instance profile)> with the Cluster IAM Role ARN.
 ```
@@ -93,5 +93,15 @@ data:
 ```
 Apply the configuration
 ```
-kubectl apply -f aws-auth-cm.yaml
+$ kubectl apply -f aws-auth-cm.yaml
+```
+## Test Worker Nodes is coming up
+```
+$ kubectl get nodes
+```
+
+## Destroy provisioned Instance
+Make sure all the resources created by EKS are removed (LoadBalancers, Security groups), and issue:
+```
+$ terraform destroy
 ```
