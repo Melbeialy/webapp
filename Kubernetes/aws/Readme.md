@@ -66,7 +66,28 @@ Default output format []: json
 aws eks --region region update-kubeconfig --name cluster_name
 ```
 
-## Test your `kubctl` configuration
+## Test your `kubectl` configuration
 ```
 kubectl get svc
+```
+
+## Enable worker nodes to cluster
+Download, edit, and apply the AWS IAM Authenticator configuration map
+```
+curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/aws-auth-cm.yaml
+```
+open the aws-auth-cm.yaml file and replace the <ARN of instance role (not instance profile)> with the Cluster IAM Role ARN.
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: <ARN of instance role (not instance profile)>
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
 ```
