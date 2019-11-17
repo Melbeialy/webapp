@@ -15,7 +15,7 @@ webapp-lb-service.yaml
 ## Perform Pods Deployment
 Run the following command.
 ```
-kubectl create -f webapp-deployment.yaml
+$ kubectl create -f webapp-deployment.yaml
 ```
 ## Test Pods is coming up
 ```
@@ -24,7 +24,7 @@ $ kubectl get nodes.
 ## Perform Load Balancer Deployment
 Run the following command.
 ```
-kubectl create -f webapp-lb-service.yaml
+$ kubectl create -f webapp-lb-service.yaml
 ```
 ## Test Load Balancer is coming up
 ```
