@@ -4,12 +4,12 @@
 variable "cluster-name" {}
 
 variable "vpc_id" {
-  description = "VPC ID "
+  description = "VPC ID"
 }
 
 variable "eks_subnets" {
   description = "Master subnet ids"
-  type        = "list"
+  type = "list"
 }
 
 variable "worker_subnet" {
@@ -17,7 +17,7 @@ variable "worker_subnet" {
 }
 
 variable "subnet_ids" {
-  type        = "list"
+  #type = "list"
   description = "List of all subnet in cluster"
 }
 

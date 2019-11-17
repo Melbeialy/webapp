@@ -21,5 +21,5 @@ variable "instance_key" {
 variable "server-name" {}
 
 variable "k8-subnet" {
-  type = ""
+  default = ""
 }

@@ -25,6 +25,31 @@ resource "aws_iam_role" "cluster-role" {
 POLICY
 }
 
+resource "aws_iam_role_policy" "cluster-role-service-linked-role" {
+  name = "service-linked-role"
+  role = aws_iam_role.cluster-role.name
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "arn:aws:iam::*:role/aws-service-role/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeAccountAttributes"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+
+}
 resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = "${aws_iam_role.cluster-role.name}"
@@ -34,6 +59,7 @@ resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = "${aws_iam_role.cluster-role.name}"
 }
+
 
 #Security Group
 resource "aws_security_group" "cluster-sg" {
@@ -80,7 +106,7 @@ resource "aws_eks_cluster" "eks-cluster" {
 
   vpc_config {
     security_group_ids = ["${aws_security_group.cluster-sg.id}"]
-    subnet_ids         = ["${var.subnet_ids}"]
+    subnet_ids =  var.subnet_ids
   }
 
   depends_on = [

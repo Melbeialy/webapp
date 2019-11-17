@@ -187,7 +187,7 @@ resource "aws_autoscaling_group" "worker" {
   max_size             = 3
   min_size             = 2
   name                 = "worker-nodes"
-  vpc_zone_identifier  = ["${var.worker_subnet}"]
+  vpc_zone_identifier  = var.worker_subnet
 
   tag {
     key                 = "Name"

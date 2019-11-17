@@ -17,8 +17,8 @@ resource "aws_security_group" "kubernetes-server-instance-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
-    Name = "kubectl_server-SG"
+  tags = {
+    name = "kubectl_server-SG"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_instance" "kubernetes-server" {
   instance_type          = "${var.instance_type}"
   ami                    = "${var.instance_ami}"
   key_name               = "${var.instance_key}"
-  subnet_id              = "${var.k8-subnet}"
+  subnet_id              = element("${var.k8-subnet}",0)
   vpc_security_group_ids = ["${aws_security_group.kubernetes-server-instance-sg.id}"]
 
   root_block_device {
@@ -35,7 +35,7 @@ resource "aws_instance" "kubernetes-server" {
     delete_on_termination = "true"
   }
 
-  tags {
+  tags = {
     Name = "${var.server-name}"
   }
 }

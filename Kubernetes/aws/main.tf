@@ -1,6 +1,8 @@
 provider "aws" {
-  region  = "${var.region}"
-  profile = "${var.profile}"
+  access_key = var.AWS_ACCESS_KEY
+  secret_key = var.AWS_SECRET_KEY
+  region  = var.region
+  profile = var.profile
 }
 
 # VPC - Production & Staging
@@ -22,7 +24,7 @@ module "kubernetes-server" {
   server-name   = "${var.server-name}"
   instance_key  = "${var.key}"
   vpc_id        = "${module.vpc.vpc_id}"
-  k8-subnet     = "${module.vpc.public_subnet[0]}"
+  k8-subnet     = flatten(["${module.vpc.public_subnet}"])
 }
 
 module "eks" {
@@ -31,6 +33,6 @@ module "eks" {
   cluster-name                  = "${var.cluster-name}"
   kubernetes-server-instance-sg = "${module.kubernetes-server.kubernetes-server-instance-sg}"
   eks_subnets                   = ["${module.vpc.master_subnet}"]
-  worker_subnet                 = ["${module.vpc.worker_node_subnet}"]
-  subnet_ids                    = ["${module.vpc.master_subnet}", "${module.vpc.worker_node_subnet}"]
+  worker_subnet                 = flatten(["${module.vpc.worker_node_subnet}"])
+  subnet_ids                    = flatten(["${module.vpc.master_subnet}" , "${module.vpc.worker_node_subnet}"])
 }

@@ -69,12 +69,12 @@ resource "aws_subnet" "worker_subnet" {
   }
 }
 
-#VPC Elastic IP
-resource "aws_eip" "eip" {
-  vpc = true
+#Internet Gatway
+resource "aws_internet_gateway" "igw" {
+  vpc_id = "${aws_vpc.this.id}"
 
   tags = {
-    Name = "Elastic IP"
+    Name = "Internet-Gateway"
   }
 }
 
@@ -106,12 +106,12 @@ resource "aws_route_table_association" "public" {
   route_table_id = "${aws_route_table.rt_public.id}"
 }
 
-#Internet Gatway
-resource "aws_internet_gateway" "igw" {
-  vpc_id = "${aws_vpc.this.id}"
+#VPC Elastic IP
+resource "aws_eip" "eip" {
+  vpc = true
 
   tags = {
-    Name = "Internet-Gateway"
+    Name = "Elastic IP"
   }
 }
 
@@ -120,7 +120,7 @@ resource "aws_nat_gateway" "nat-gw" {
   allocation_id = "${aws_eip.eip.id}"
   subnet_id     = "${element(aws_subnet.master_subnet.*.id, 0)}"
 
-  tags {
+  tags = {
     Name = "Nat_gateway"
   }
 }
@@ -135,7 +135,7 @@ resource "aws_route_table" "rt_private" {
     nat_gateway_id = "${aws_nat_gateway.nat-gw.id}"
   }
 
-  tags {
+  tags = {
     Name = "Private_route_table"
   }
 }
