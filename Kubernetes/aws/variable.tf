@@ -4,11 +4,11 @@ variable "profile" {
 }
 
 variable  "AWS_ACCESS_KEY" {
-  default = ""
+
 }
 
 variable  "AWS_SECRET_KEY" {
-  default = ""
+
 }
 
 variable "region" {
@@ -17,7 +17,7 @@ variable "region" {
 
 variable "key" {
   description = "Enter Key name"
-  default = ""
+
 }
 
 variable "sub_ids" {
