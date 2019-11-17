@@ -12,9 +12,9 @@ Make sure that public key is already uploaded to AWS and located on the local aw
 
 ## Terraform apply
 ```
-terraform init
-terraform run
-terraform apply
+$ terraform init
+$ terraform run
+$ terraform apply
 ```
 
 ## SSH provisioned EC2 Instance
@@ -25,30 +25,48 @@ Kubenetes-server-ip = *.*.*.*
 
 ## Download kubectl
 ```
-curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/kubectl
+$ curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/kubectl
 
-chmod +x ./kubectl
+$ chmod +x ./kubectl
 
-mkdir -p $HOME/bin
+$ mkdir -p $HOME/bin
 
-cp ./kubectl $HOME/bin/kubectl
+$ cp ./kubectl $HOME/bin/kubectl
 
-export PATH=$HOME/bin:$PATH
+$ export PATH=$HOME/bin:$PATH
 
-echo ‘export PATH=$HOME/bin:$PATH’ >> ~/.bashrc
+$ echo ‘export PATH=$HOME/bin:$PATH’ >> ~/.bashrc
 ```
 
 ## Download  aws-iam-authenticator
 ```
-curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator
+$ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator
 
-chmod +x ./aws-iam-authenticator
+$ chmod +x ./aws-iam-authenticator
 
-mkdir -p $HOME/bin
+$ mkdir -p $HOME/bin
 
-cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
+$ cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
 
-export PATH=$HOME/bin:$PATH
+$ export PATH=$HOME/bin:$PATH
 
-echo ‘export PATH=$HOME/bin:$PATH’ >> ~/.bashrc
+$ echo ‘export PATH=$HOME/bin:$PATH’ >> ~/.bashrc
+```
+
+## Configure kubectl for Amazon EKS
+Use `aws configure` before creating kubeconfig file, then apply below command to create the profile and add required configuration to it.
+```
+$ aws configure
+AWS Access Key ID []:
+AWS Secret Access Key []:
+Default region name []: ap-southeast-2
+Default output format []: json
+```
+```
+aws eks --region region update-kubeconfig --name cluster_name
+```
+
+## Test your `kubctl` configuration
+```
+kubectl get svc
 ```
