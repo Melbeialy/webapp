@@ -71,7 +71,7 @@ aws eks --region region update-kubeconfig --name cluster_name
 kubectl get svc
 ```
 
-## Enable worker nodes to cluster
+## Enable worker nodes to EKS cluster
 Download, edit, and apply the AWS IAM Authenticator configuration map
 ```
 curl -o aws-auth-cm.yaml https://amazon-eks.s3-us-west-2.amazonaws.com/cloudformation/2019-02-11/aws-auth-cm.yaml
@@ -90,4 +90,8 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
+```
+Apply the configuration
+```
+kubectl apply -f aws-auth-cm.yaml
 ```
