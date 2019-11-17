@@ -6,7 +6,6 @@ Welcome to WebApp Deployment!
 This repository is used to build EKS Cluster and an EC2 Kubernetes Server in order to manage deployment of the `elbeialy/webapp` docker image which runs WebApp application.
 
 ## On Local Machine 
-```
 Download the Terraform resouces to local folder from https://github.com/Melbeialy/webapp/tree/master/Kubernetes/aws
 
 Make sure that public key is already uploaded to AWS and located on the local aws repository folder before running terrafom command.
