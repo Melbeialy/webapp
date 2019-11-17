@@ -16,7 +16,7 @@ variable "region" {
 }
 
 variable "key" {
-  description = "Enter Key name"
+  description = "Enter Key name - Please make sure that your public key is already uploaded to AWS"
 
 }
 
@@ -33,7 +33,7 @@ variable "instance-ami" {
   default = {
  	ap-northeast-1  = "ami-04b2d1589ab1d972c"
 	ap-northeast-2  = "ami-0be3e6f84d3b968cd"
-  ap-south-1  = "ami-0b99c7725b9484f9e"
+  	ap-south-1  = "ami-0b99c7725b9484f9e"
 	ap-southeast-1  = "ami-0fb6b6f9e81056553"
 	ap-southeast-2  = "ami-075caa3491def750b"
 	ca-central-1	= "ami-0a67d15f2858e33cb"
