@@ -1,14 +1,14 @@
 variable "profile" {
   description = "AWS User account Profile"
-  default = "melbeialy"
+  default = ""
 }
 
 variable  "AWS_ACCESS_KEY" {
-  default = "AKIATX3UBEOF4QN5ZF3M"
+  default = ""
 }
 
 variable  "AWS_SECRET_KEY" {
-  default = "ef4JhDP/64V/mVz3nUMGdReK7ZxMgRyIl4vp6VEI"
+  default = ""
 }
 
 variable "region" {
@@ -17,7 +17,7 @@ variable "region" {
 
 variable "key" {
   description = "Enter Key name"
-  default = "mykey"
+  default = ""
 }
 
 variable "sub_ids" {
