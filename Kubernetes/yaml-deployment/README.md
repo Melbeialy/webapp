@@ -30,7 +30,7 @@ $ kubectl create -f webapp-lb-service.yaml
 ```
 $ kubectl get service.
 ```
-## Test WebApp application from public internet
+## Test WebApp application from internet
 ```
 http://<load_balancer_DNS_name>:5000
 ```
