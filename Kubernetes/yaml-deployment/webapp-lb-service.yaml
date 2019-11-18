@@ -1,21 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: webapp
+  annotations:
+    service.beta.kubernetes.io/brightbox-load-balancer-healthcheck-request: /
 spec:
-  replicas: 4
+  type: LoadBalancer
   selector:
-    matchLabels:
-      app: webapp
-  template:
-    metadata:
-      labels:
-        app: webapp
-    spec:
-      containers:
-        - name: webapp
-          image: elbeialy/webapp
-          ports:
-            - name: web
-              containerPort: 5000
-              protocol: TCP
+    app: webapp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 5000
+      targetPort: web
