@@ -1,6 +1,6 @@
 variable "profile" {
   description = "AWS User account Profile"
-  default = ""
+
 }
 
 variable  "AWS_ACCESS_KEY" {

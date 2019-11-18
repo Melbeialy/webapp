@@ -17,7 +17,7 @@ Run the following command.
 ```
 $ kubectl create -f webapp-deployment.yaml
 ```
-## Test Pods is coming up
+## Test Pods are  coming up
 ```
 $ kubectl get nodes.
 ```
@@ -30,7 +30,7 @@ $ kubectl create -f webapp-lb-service.yaml
 ```
 $ kubectl get service.
 ```
-## Test WebApp application from internet
+## Test WebApp application from the internet
 ```
 http://<load_balancer_DNS_name>:5000
 ```
