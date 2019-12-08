@@ -22,10 +22,10 @@ Details on how the Docker file is created could be found in https://github.com/M
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
-    sudo docker build -tag elbeialy/webap .
+    sudo docker build -tag elbeialy/webapp .
     ```
 ## Docker Image Layers
-- OS Layer: Ubunto is selected as a fairly simplified that provides extensive support for its OS.
+- OS Layer: Ubunto is selected as a fairly simplified Linux distribution that provides extensive support for its OS.
 - Repos Update Layer: includes latest updates for Ubunto repos.
 - Python Layer: includes installing Python and its dependencies.
 - Webserver Layer: includes installing and configuring webserver (Flask).
